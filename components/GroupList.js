@@ -1,24 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components'
 
-export const Group = ({ title, items }) => {
+const Group = ({ user, event, active, time }) => {
     return(
-      <GroupBlock>
-        <GroupTitle>{title}</GroupTitle>
-        {items.map((item, index) => 
-            (<GroupItem key={index}>
-            <Avatar source={{
-                uri: item.user.avatar
-            }} />
-            <View style={{flex: 1}}>
-                <FullName>{item.user.fullname}</FullName>
-                <GrayText>{item.event}</GrayText>
+        <GroupItem>
+          <Avatar source={{uri: user.avatar}} />
+          <View style={{flex: 1}}>
+              <FullName>{user.fullname}</FullName>
+              <GrayText>{event}</GrayText>
           </View>
-          <GroupDate active={item.active}>{item.time}</GroupDate>
+          <GroupDate active={active}>{time}</GroupDate>
         </GroupItem>
-        ))}
-      </GroupBlock>
     )
 }
 
@@ -28,8 +21,8 @@ Group.defaultProps = {
 }
 
 const GroupDate = styled.Text `
-  background: ${props => props.active ? '#46D2CB' : '#204A48'};
-  color: ${props => props.active ? '#204A48' : '#DDE7F2'};
+  background: ${props => (props.active ? '#46D2CB' : '#204A48')};
+  color: ${props => (props.active ? '#204A48' : '#DDE7F2')};
   border-radius: 18px;
   font-weight: 600;
   font-size: 14px;
@@ -62,9 +55,4 @@ const GroupItem = styled.TouchableOpacity`
   border-bottom-width: 1px;
   border-bottom-color: #C4DFE8;
 `
-
-const GroupBlock = styled.View`
-  padding: 0 20px;
-  margin-bottom: 25px;
-`
-
+export default Group

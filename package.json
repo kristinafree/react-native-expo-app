@@ -5,7 +5,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "deploy": "gh-pages -d web-build",
+    "predeploy": "expo build:web"
   },
   "dependencies": {
     "expo": "~37.0.3",
@@ -20,6 +22,5 @@
     "babel-preset-expo": "~8.1.0",
     "gh-pages": "^3.0.0"
   },
-  "private": true,
-  "homepage": "https://github.com/kristinafree/react-native-todo"
+  "private": true
 }
